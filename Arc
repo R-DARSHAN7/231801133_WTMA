@@ -1,0 +1,45 @@
+graph TD
+  subgraph UI Layer
+    A[User Browser]
+    B[Frontend (React/HTML/CSS)]
+  end
+
+  subgraph API Layer
+    C[API Gateway (Azure API Mgmt)<br/>Scalability, Security]
+    D[Authentication Service (Azure AD B2C)<br/>Security]
+    E[Backend App Service (Node.js / Flask)<br/>Scalable, Containerized]
+  end
+
+  subgraph Service Layer
+    F[Business Logic Microservices<br/>Maintainability, Scalability]
+    G[Azure Function / Queue Processor<br/>Performance]
+    H[Redis Cache<br/>Low Latency]
+  end
+
+  subgraph Data Layer
+    I[(Azure SQL DB)<br/>Encrypted, Scalable]
+    J[(Blob Storage)<br/>Secure File Storage]
+    K[(App Insights / Log Analytics)<br/>Monitoring & Logs]
+  end
+
+  subgraph DevOps & CI/CD
+    L[Azure DevOps Pipelines<br/>Continuous Integration]
+    M[GitHub / Repo<br/>Source Code]
+  end
+
+  %% Connections
+  A --> B
+  B --> C
+  C --> D
+  D --> E
+  E --> F
+  F --> I
+  F --> H
+  F --> J
+  F --> G
+  G --> I
+  G --> J
+  F --> K
+  E --> K
+  M --> L
+  L --> E
